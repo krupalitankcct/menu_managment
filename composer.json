@@ -1,0 +1,32 @@
+{
+    "name": "menu/menu-managment",
+    "description": "Custom menu managment",
+    "type": "project",
+    "license": "MIT",
+    "version": "v1.0.0",
+    "authors": [
+        {
+            "name": "krupalibit1998",
+            "email": "krupali.t@communicationcrafts.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Menu\\Menumanagment\\": "src/"
+        }
+    },
+    "extra": 
+    {
+      "laravel": 
+      {
+          "providers": [ "Menu\\Menumanagment\\MenuServiceProvider" ]
+      }
+    },
+    "require": {
+        "cms/cms-package": "1.0"
+    },
+    "require-dev": {
+        "cms/cms-package": "1.0"
+    }
+}
