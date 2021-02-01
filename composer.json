@@ -1,5 +1,5 @@
 {
-    "name": "menu/menu-managment",
+    "name": "menus/menu-managment",
     "description": "Custom menu managment",
     "type": "project",
     "license": "MIT",
@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Menus\\Menumanagment\\": "src/"
+            "Menu\\Menumanagment\\": "src/"
         }
     },
     "extra": 
