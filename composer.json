@@ -25,8 +25,5 @@
     },
     "require": {
         "cms/cms-package": "1.0"
-    },
-    "require-dev": {
-        "cms/cms-package": "1.0"
     }
 }
