@@ -24,6 +24,6 @@
       }
     },
     "require": {
-        "cms/cms-package": "1.0"
+        "cms/content-management": "1.0"
     }
 }
