@@ -23,6 +23,12 @@
           "providers": [ "Menu\\Menumanagment\\MenuServiceProvider" ]
       }
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/krupalitankcct/cms_package"
+        }
+    ],
     "require": {
         "cms/content-management": "1.0"
     }
