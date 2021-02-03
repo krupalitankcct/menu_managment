@@ -7,6 +7,7 @@
       rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('menu/style.css') }}">
     
+    
 </head>
 <body>
     <div class="container">

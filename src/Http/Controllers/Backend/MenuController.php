@@ -92,7 +92,7 @@ class MenuController extends Controller {
                 'title' => $request->title
               ]);
 
-        return redirect()->route('menu.menu_list')->withFlashSuccess('Menu Created SuccessFully');
+        return redirect()->route('menu.menu_list')->withFlashSuccess(__('package_lang::validation.custom.menu_create'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -146,7 +146,7 @@ class MenuController extends Controller {
         $menuUpdate->status = $request->status;
         $menuUpdate->save();
 
-        return redirect()->route('menu.menu_list')->withFlashSuccess('Menu Edited SuccessFully');
+        return redirect()->route('menu.menu_list')->withFlashSuccess(__('package_lang::validation.custom.menu_edit'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -167,14 +167,56 @@ class MenuController extends Controller {
                 ->where('menu_id', $id)->count();
         // check menu item is null
         if($menuItems>0){
-            return redirect()->route('menu.menu_list')->withErrors('Menu  SuccessFully');
+            return redirect()->route('menu.menu_list')->withErrors(__('package_lang::validation.custom.menu_delete'));
         }
         // get menu item details base on id
         $menu = $this->menu->find($id);
         //delete menu 
         $menu->delete();
 
-        return redirect()->route('menu.menu_list')->withFlashSuccess('Menu Delete SuccessFully');
+        return redirect()->route('menu.menu_list')->withFlashSuccess(__('package_lang::validation.custom.menu_delete'));
+
+        }catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+        }
+    }
+
+    /**
+     * status Active method for menu 
+     * @param type $id
+     * @return type
+     */
+    public function menuActive($id) {
+        try{
+        // update status Active in menu table
+        $menuCategoryUpdate = $this->menu->findOrFail($id);
+        $menuCategoryUpdate->status = 'Active';
+        $menuCategoryUpdate->save();
+
+        return redirect()->route('menu.menu_list')
+                        ->withFlashSuccess(__('package_lang::validation.custom.menu_active'));
+
+        }catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+        }
+    }
+
+    /**
+     * Inactive status in menu table
+     * @param $id
+     * @return mixed
+     */
+    public function menuInactive($id) {
+        try{
+        // update status inactive in menu table
+        $menuCategoryUpdate = $this->menu->findOrFail($id);
+        $menuCategoryUpdate->status = 'Inactive';
+        $menuCategoryUpdate->save();
+
+        return redirect()->route('menu.menu_list')
+                        ->withFlashSuccess(__('package_lang::validation.custom.menu_inactive'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -257,7 +299,7 @@ class MenuController extends Controller {
 
               ]);
 
-        return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess('Menu Item Added SuccessFully');
+        return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess(__('package_lang::validation.custom.menu_delete'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -320,7 +362,7 @@ class MenuController extends Controller {
         $menuUpdate = $this->menuItem->findOrFail($id);
         $menuUpdate->update($request->all());
 
-        return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess('Menu Item Edited SuccessFully');
+        return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess(__('package_lang::validation.custom.menu_item_edit'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -350,13 +392,56 @@ class MenuController extends Controller {
         //delete menu item
         $menuItem->delete();
         // redirect
-        return redirect()->route('menu.item.index', $menuId)->withFlashSuccess('Menu Item Deleted SuccessFully');
+        return redirect()->route('menu.item.index', $menuId)->withFlashSuccess(__('package_lang::validation.custom.menu_item_delete'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
             return view('menu::error.505')->withFlashDanger($ex->getMessage());
         }
     }
+
+    /**
+     * status Active method for menu item
+     * @param type $id
+     * @return type
+     */
+    public function activeMenuItem($id) {
+        try{
+        // update status ative in menu item table
+        $menuUpdate = $this->menuItem->findOrFail($id);
+        $menuUpdate->status = 'Active';
+        $menuUpdate->save();
+
+        return redirect()->route('menu.item.index', $menuUpdate->menu_id)->withFlashSuccess(__('package_lang::validation.custom.menu_item_active'));
+
+        }catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+        }
+
+    }
+
+    /**
+     * Inactive menu item
+     * @param $id
+     * @return mixed
+     */
+    public function inactiveMenuItem($id) {
+        try{
+        // update status inactive menu item table
+        $menuUpdate = $this->menuItem->findOrFail($id);
+        $menuUpdate->status = 'Inactive';
+        $menuUpdate->save();
+
+       return redirect()->route('menu.item.index', $menuUpdate->menu_id)->withFlashSuccess(__('package_lang::validation.custom.menu_iem_inactive'));
+       
+       }catch (\Exception $ex) {
+            Log::error($ex->getMessage());
+            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+        }
+
+    }
+
     
     
     

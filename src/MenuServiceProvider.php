@@ -10,6 +10,7 @@ use Menu\Menumanagment\View\Components\MenuHeader;
 use Menu\Menumanagment\View\Components\MenuItemAdd;
 use Menu\Menumanagment\View\Components\MenuItemEdit;
 use Menu\Menumanagment\View\Components\MenuItemList;
+use Menu\Menumanagment\View\Components\MenuPage;
 use Artisan;
 
 class MenuServiceProvider extends ServiceProvider
@@ -73,7 +74,8 @@ class MenuServiceProvider extends ServiceProvider
             MenuItemAdd::class,
             MenuItemEdit::class,
             MenuItemList::class,
-            MenuHeader::class
+            MenuHeader::class,
+            MenuPage::class
         ]);
 
         Artisan::call('vendor:publish --tag="asset"');   

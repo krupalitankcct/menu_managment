@@ -26,9 +26,19 @@
                             @if (count($menuItems) > 0)
                             @foreach($menuItems as $menuItem)
                                 <tr>
-                                    <td>{{ $menuItem->menu_title }}</td>
+                                    <td class="text-transform">{{ $menuItem->menu_title }}</td>
                                     <td>{{ $menuItem->menu_types }}</td>
-                                    <td>{{ $menuItem->status }}</td>
+                                    <td>
+                                        @if($menuItem->status == 'Active')
+                                            <a href="{{ route('menu.inactive',$menuItem->id) }}" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Click to Inactive">
+                                            Active
+                                            </a>
+                                        @else
+                                            <a href="{{ route('menu.active',$menuItem->id) }}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Click to Active">
+                                             InActive   
+                                            </a>
+                                        @endif
+                                    </td>
                                     <td class="btn-td">
                                         <div class='btn-group'>
                                         <a href="{{ route('menu.item.edit',$menuItem->id) }}"  class='btn btn-info '><i class="glyphicon glyphicon-edit"></i></a>

@@ -6,16 +6,22 @@ use Illuminate\Support\Facades\Blade;
 
 class MenuPage extends Component
 {
-    public $menus;
+    public $mainmenu;
+    public $footermenu2;
+    public $footermenu1;
+    public $align;
     
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($menus = null)
+    public function __construct($mainmenu = null,$align = null,$footermenu1 = null,$footermenu2 = null)
     {
-        $this->menus = $menus;
+        $this->mainmenu = $mainmenu;
+        $this->footermenu2 = $footermenu2;
+        $this->footermenu1 = $footermenu1;
+        $this->align = $align;
         
     }
 
@@ -26,6 +32,6 @@ class MenuPage extends Component
      */
     public function render()
     {
-       return view('menu::components.menu_list');
+       return view('menu::components.menu_page');
     }
 }

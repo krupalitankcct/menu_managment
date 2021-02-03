@@ -21,14 +21,12 @@ private $Repository;
 
    public function index()
    {
-       $mainmenu = $this->Repository->getMenulist('Main Menu');
-       $FooterMenu1 = $this->Repository->getMenulist('Footer Menu 1');
-       $FooterMenu2 = $this->Repository->getMenulist('Footer Menu 2');
-       
-       return view('menu::components.menu_page', [
-          'mainmenu'=>$mainmenu,
-          'FooterMenu1'=>$FooterMenu1,
-          'FooterMenu2'=>$FooterMenu2
-       ]);
+      $mainmenu = $this->Repository->getMenulist('Main Menu');
+      $FooterMenu1 = $this->Repository->getMenulist('Footer Menu 1');
+      $FooterMenu2 = $this->Repository->getMenulist('Footer Menu 2');
+      $align = 'horizontal-menu';
+      
+      return view('menu::Frontend.menupage', compact('mainmenu', 'FooterMenu1','FooterMenu2','align'));
+     
    }
  }

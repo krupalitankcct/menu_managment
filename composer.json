@@ -1,5 +1,5 @@
 {
-    "name": "menus/menu-managment",
+    "name": "menu/menu-managment",
     "description": "Custom menu managment",
     "type": "project",
     "license": "MIT",
@@ -23,12 +23,6 @@
           "providers": [ "Menu\\Menumanagment\\MenuServiceProvider" ]
       }
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/krupalitankcct/cms_package"
-        }
-    ],
     "require": {
         "cms/content-management": "1.0"
     }
