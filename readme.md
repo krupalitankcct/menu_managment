@@ -2,7 +2,7 @@ If you're using Laravel 8, this is all there is to do.
 
 Run bellow command to install
 
-composer require menus/menu-managment
+composer create-project menus/menu-managment
 
 Then follow bellow steps
 
