@@ -1,10 +1,10 @@
 <?php
-namespace Menu\Menumanagment\Http\Controllers\Frontend;
+namespace menus\menumanagement\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use Menu\Menumanagment\Repositories\Repository;
+use menus\menumanagement\Repositories\Repository;
 use Illuminate\Http\Request;
-use Cms\Cmspackage\Models\Cms;
+use cms\cmspackage\Models\Cms;
 use Redirect;
 
 /**

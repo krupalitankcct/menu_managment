@@ -1,6 +1,6 @@
 <?php
 
-namespace Menu\Menumanagment\View\Components;
+namespace menus\menumanagement\View\Components;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Blade;
 

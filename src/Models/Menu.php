@@ -1,6 +1,6 @@
 <?php
 
-namespace Menu\Menumanagment\Models;
+namespace menus\menumanagement\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,6 +24,6 @@ class Menu extends Model
     
     
     public function menuCategory() {
-        return $this->hasOne('Menu\Menumanagment\Models\MenuCategory','id','menu_category_id');
+        return $this->hasOne('menus\menumanagement\Models\MenuCategory','id','menu_category_id');
     }
 }

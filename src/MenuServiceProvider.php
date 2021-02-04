@@ -1,16 +1,16 @@
 <?php 
 
-namespace Menu\Menumanagment;
+namespace menus\menumanagement;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
-use Menu\Menumanagment\View\Components\MenuAdd;
-use Menu\Menumanagment\View\Components\MenuEdit;
-use Menu\Menumanagment\View\Components\MenuList;
-use Menu\Menumanagment\View\Components\MenuHeader;
-use Menu\Menumanagment\View\Components\MenuItemAdd;
-use Menu\Menumanagment\View\Components\MenuItemEdit;
-use Menu\Menumanagment\View\Components\MenuItemList;
-use Menu\Menumanagment\View\Components\MenuPage;
+use menus\menumanagement\View\Components\MenuAdd;
+use menus\menumanagement\View\Components\MenuEdit;
+use menus\menumanagement\View\Components\MenuList;
+use menus\menumanagement\View\Components\MenuHeader;
+use menus\menumanagement\View\Components\MenuItemAdd;
+use menus\menumanagement\View\Components\MenuItemEdit;
+use menus\menumanagement\View\Components\MenuItemList;
+use menus\menumanagement\View\Components\MenuPage;
 use Artisan;
 
 class MenuServiceProvider extends ServiceProvider
@@ -32,13 +32,13 @@ class MenuServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(__DIR__.'/../config/constant.php', 'menu');
 
-        $this->app['router']->namespace('Menu\Menumanagment\Http\Controllers\Backend')
+        $this->app['router']->namespace('menus\menumanagement\Http\Controllers\Backend')
                 ->middleware(['web'])
                 ->group(function () {
                     $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
                 });
 
-         $this->app['router']->namespace('Menu\Menumanagment\Http\Controllers\Frontend')
+         $this->app['router']->namespace('menus\menumanagement\Http\Controllers\Frontend')
                 ->middleware(['web'])
                 ->group(function () {
                     $this->loadRoutesFrom(__DIR__ . '/routes/menupage.php');

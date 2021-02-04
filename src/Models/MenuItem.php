@@ -1,6 +1,6 @@
 <?php
 
-namespace Menu\Menumanagment\Models;
+namespace menus\menumanagement\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -30,7 +30,7 @@ class MenuItem extends Model
      * @return type
      */
     public function cms() {
-        return $this->hasOne('Cms\Cmspackage\Models\Cms','id','cms_id');
+        return $this->hasOne('cms\cmspackage\Models\Cms','id','cms_id');
     }
     
 }

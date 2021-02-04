@@ -1,12 +1,12 @@
 <?php
-namespace Menu\Menumanagment\Http\Controllers\Backend;
+namespace menus\menumanagement\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Cms\Cmspackage\Models\Cms;
-use Menu\Menumanagment\Models\Menu;
-use Menu\Menumanagment\Models\MenuCategory;
-use Menu\Menumanagment\Models\MenuItem;
+use cms\cmspackage\Models\Cms;
+use menus\menumanagement\Models\Menu;
+use menus\menumanagement\Models\MenuCategory;
+use menus\menumanagement\Models\MenuItem;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;

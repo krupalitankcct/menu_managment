@@ -1,6 +1,6 @@
 {
-    "name": "menu/menu-managment",
-    "description": "Custom menu managment",
+    "name": "menus/menumanagement",
+    "description": "menu management",
     "type": "project",
     "license": "MIT",
     "version": "v1.0.0",
@@ -13,17 +13,17 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Menu\\Menumanagment\\": "src/"
+            "menus\\menumanagement\\": "src/"
         }
     },
     "extra": 
     {
       "laravel": 
       {
-          "providers": [ "Menu\\Menumanagment\\MenuServiceProvider" ]
+          "providers": [ "menus\\menumanagement\\MenuServiceProvider" ]
       }
     },
     "require": {
-        "cms/content-management": "1.0"
+        "cms/cmspackage": "1.0"
     }
 }
