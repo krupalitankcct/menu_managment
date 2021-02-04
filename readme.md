@@ -11,14 +11,14 @@ Then follow bellow steps
 ### Configuration
 
 If you want to change these options, you'll have to publish the `config` file.
-    php artisan vendor:publish --provider="Menu\Menumanagment\MenuServiceProvider" --tag="config"
+    php artisan vendor:publish --provider="menus/menumanagement\MenuServiceProvider" --tag="config"
 This will give you a `menu.php` config file in which you can make the changes.
 
 To make your life easy, the package also includes a ready to use `migration` which you can publish by running:
-    php artisan vendor:publish --provider="Menu\Menumanagment\MenuServiceProvider" --tag="migrations"
+    php artisan vendor:publish --provider="menus/menumanagement\MenuServiceProvider" --tag="migrations"
     
 Then run bellow command to publish config and resource files
 
-php artisan vendor:publish --provider="Menu\Menumanagment\MenuServiceProvider" --tag="views"
+php artisan vendor:publish --provider="menus/menumanagement\MenuServiceProvider" --tag="views"
 
-php artisan vendor:publish --provider="Menu\Menumanagment\MenuServiceProvider" --tag="lang"
+php artisan vendor:publish --provider="menus/menumanagement\MenuServiceProvider" --tag="lang"
