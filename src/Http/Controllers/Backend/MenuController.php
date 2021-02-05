@@ -181,7 +181,7 @@ class MenuController extends Controller {
                 ->where('menu_id', $id)->count();
         // check menu item is null
         if($menuItems>0){
-            return redirect()->route('menu.menu_list')->withErrors(__('package_lang::validation.custom.menu_delete'));
+            return redirect()->route('menu.menu_list')->withErrors(__('package_lang::menu.custom.menu_is_not_delete'));
         }
         // get menu item details base on id
         $menu = $this->menu->find($id);

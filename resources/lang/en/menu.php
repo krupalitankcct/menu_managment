@@ -6,6 +6,7 @@ return [
 		'menu_create'=>'Menu created successfully',
 		'menu_edit'=>'Menu updated successfully',
 		'menu_delete'=>'Menu deleted',
+		'menu_is_not_delete'=>'Menu Item Available So Menu not deleted',
 		'menu_active'=>'Menu active',
 		'menu_inactive'=>'Menu Inactive',
 		'menu_item_create'=>'Menu Item created successfully',
