@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;
 use Redirect;
+use Session;
 
 /**
  * Menu Controller
@@ -38,8 +39,24 @@ class MenuController extends Controller {
      */
     public function menuIndex(Request $request) {
         try{
-        // get menu category 
-        $menus = $this->menu->with('menuCategory')->get();
+        //unset session
+        if (isset($request->reset)) {
+            Session::forget('menu');
+            return redirect()->route('menu.menu_list');
+        }
+        //initialise values
+        $request['search_menu_title'] = (Session::has('search_menu_title')) ? Session::get('search_menu_title') : $request->get('search_menu_title');
+        
+        $search_menu_title = $request->get('search_menu_title');
+
+        $menus = $this->menu->with('menuCategory');
+
+        // searching condition
+        if ($search_menu_title) {
+            $menus->where('title', 'like', '%' . $search_menu_title . '%');
+        }
+        //get data
+        $menus = $menus->get();
         // get total records
         $total_records = count($menus);
         // pagination
@@ -92,7 +109,7 @@ class MenuController extends Controller {
                 'title' => $request->title
               ]);
 
-        return redirect()->route('menu.menu_list')->withFlashSuccess(__('package_lang::validation.custom.menu_create'));
+        return redirect()->route('menu.menu_list')->withFlashSuccess(__('package_lang::menu.custom.menu_create'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -146,7 +163,7 @@ class MenuController extends Controller {
         $menuUpdate->status = $request->status;
         $menuUpdate->save();
 
-        return redirect()->route('menu.menu_list')->withFlashSuccess(__('package_lang::validation.custom.menu_edit'));
+        return redirect()->route('menu.menu_list')->withFlashSuccess(__('package_lang::menu.custom.menu_edit'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -174,7 +191,7 @@ class MenuController extends Controller {
         //delete menu 
         $menu->delete();
 
-        return redirect()->route('menu.menu_list')->withFlashSuccess(__('package_lang::validation.custom.menu_delete'));
+        return redirect()->route('menu.menu_list')->withFlashSuccess(__('package_lang::menu.custom.menu_delete'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -195,7 +212,7 @@ class MenuController extends Controller {
         $menuCategoryUpdate->save();
 
         return redirect()->route('menu.menu_list')
-                        ->withFlashSuccess(__('package_lang::validation.custom.menu_active'));
+                        ->withFlashSuccess(__('package_lang::menu.custom.menu_active'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -216,7 +233,7 @@ class MenuController extends Controller {
         $menuCategoryUpdate->save();
 
         return redirect()->route('menu.menu_list')
-                        ->withFlashSuccess(__('package_lang::validation.custom.menu_inactive'));
+                        ->withFlashSuccess(__('package_lang::menu.custom.menu_inactive'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -227,10 +244,33 @@ class MenuController extends Controller {
     //menu item index method
     public function menuItemIndex(Request $request, $id) {
         try{
+            
+        //unset session
+        if (isset($request->reset)) {
+            Session::forget('menu');
+            return redirect()->route('menu.item.index', $id);
+        }
+        //initialise values
+        $request['search_menu_title'] = (Session::has('search_menu_title')) ? Session::get('search_menu_title') : $request->get('search_menu_title');
+        $request['search_status'] = (Session::has('search_status')) ? Session::get('search_status') : $request->get('search_status');
+
+
+        $search_menu_title = $request->get('search_menu_title');
+        $search_status = $request->get('search_status');
+
         // menu get with category 
         $menuItems = $this->menuItem
                 ->where('menu_id', $id);
-        
+
+        // searching condition
+        if ($search_menu_title) {
+            $menuItems->where('menu_title', 'like', '%' . $search_menu_title . '%');
+        }
+
+        if ($search_status) {
+            $menuItems->where('status', $search_status);
+        }
+       
         // get total records
         $total_records = count($menuItems->get());
         
@@ -299,7 +339,7 @@ class MenuController extends Controller {
 
               ]);
 
-        return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess(__('package_lang::validation.custom.menu_delete'));
+        return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess(__('package_lang::menu.custom.menu_delete'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -362,7 +402,7 @@ class MenuController extends Controller {
         $menuUpdate = $this->menuItem->findOrFail($id);
         $menuUpdate->update($request->all());
 
-        return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess(__('package_lang::validation.custom.menu_item_edit'));
+        return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess(__('package_lang::menu.custom.menu_item_edit'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -392,7 +432,7 @@ class MenuController extends Controller {
         //delete menu item
         $menuItem->delete();
         // redirect
-        return redirect()->route('menu.item.index', $menuId)->withFlashSuccess(__('package_lang::validation.custom.menu_item_delete'));
+        return redirect()->route('menu.item.index', $menuId)->withFlashSuccess(__('package_lang::menu.custom.menu_item_delete'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -412,7 +452,7 @@ class MenuController extends Controller {
         $menuUpdate->status = 'Active';
         $menuUpdate->save();
 
-        return redirect()->route('menu.item.index', $menuUpdate->menu_id)->withFlashSuccess(__('package_lang::validation.custom.menu_item_active'));
+        return redirect()->route('menu.item.index', $menuUpdate->menu_id)->withFlashSuccess(__('package_lang::menu.custom.menu_item_active'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -433,7 +473,7 @@ class MenuController extends Controller {
         $menuUpdate->status = 'Inactive';
         $menuUpdate->save();
 
-       return redirect()->route('menu.item.index', $menuUpdate->menu_id)->withFlashSuccess(__('package_lang::validation.custom.menu_iem_inactive'));
+       return redirect()->route('menu.item.index', $menuUpdate->menu_id)->withFlashSuccess(__('package_lang::menu.custom.menu_iem_inactive'));
        
        }catch (\Exception $ex) {
             Log::error($ex->getMessage());
