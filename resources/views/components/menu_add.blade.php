@@ -4,21 +4,12 @@
     <div class="animated fadeIn">
         <div class="row">
             <div class="col-sm-12 col-md-12">
+                @include('menu::messages')
                 <div class="card">
                     <div class="card-header">
                         <i class="fa fa-align-justify"></i> {{__('package_lang::menu.custom.Menu_header')}}
                     </div>
-                    @include('menu::messages')
                     <div class="card-body">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
                         <form action="{{ route('menu.store') }}" class="form-horizontal" method="post" >
                             {{ csrf_field() }}
                             <div class="row mt-4">

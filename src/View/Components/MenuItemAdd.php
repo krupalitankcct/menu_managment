@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Blade;
 
 class MenuItemAdd extends Component
 {
-    public $cms;
     public $menus;
     public $menuTypes;
     
@@ -15,9 +14,9 @@ class MenuItemAdd extends Component
      *
      * @return void
      */
-    public function __construct($cms = null,$menus = null,$menuTypes = null)
+    public function __construct($menus = null,$menuTypes = null)
     {
-        $this->cms = $cms;
+        
         $this->menus = $menus;
         $this->menuTypes = $menuTypes;
         

@@ -4,7 +4,7 @@ return [
 	//menu type
     'menu_types'=>[
         'custom' => 'Custome Link',
-        'cms' => 'CMS',
+        'cms'=>'CMS',
     ],
 
     // pagination record

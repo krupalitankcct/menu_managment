@@ -3,7 +3,6 @@ namespace menus\menumanagement\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use cms\cmspackage\Models\Cms;
 use menus\menumanagement\Models\Menu;
 use menus\menumanagement\Models\MenuCategory;
 use menus\menumanagement\Models\MenuItem;
@@ -19,16 +18,14 @@ use Session;
 class MenuController extends Controller {
 
     protected $menu;
-    protected $cms;
     protected $menuCategory;
     protected $menuItem;
     /**
      * 
      * @param Menu $menu
      */
-    public function __construct(Menu $menu, Cms $cms,MenuCategory $menuCategory,MenuItem $menuItem ) {
+    public function __construct(Menu $menu,MenuCategory $menuCategory,MenuItem $menuItem ) {
         $this->menu = $menu;
-        $this->cms = $cms;
         $this->menuCategory = $menuCategory;
         $this->menuItem = $menuItem;
     }
@@ -292,11 +289,10 @@ class MenuController extends Controller {
         try{
         // get menu details 
         $menus = $this->menu->select('id')->find($id);
-        // get cms page data
-        $cms = $this->cms->select('id', 'name')->pluck('name', 'id');
+        
         // get form constant
         $menuTypes = Config::get('menu.menu_types');
-        return view('menu::item.create', compact('cms','menus','menuTypes'));
+        return view('menu::item.create', compact('menus','menuTypes'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -323,18 +319,12 @@ class MenuController extends Controller {
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator);
         }
-
-        if ($request->menu_types == "cms") {
-            $cms = $this->cms->select('slug')->where('id',$request->cms_id)->first();
-            $request['menu_url'] = 'info/'.$cms->slug;
-        }
         //validate data store in menu item table
         $cms = MenuItem::create([
                 'menu_title' => $request->menu_title,
                 'menu_id' => $request->menu_id,
                 'menu_types' => $request->menu_types,
                 'order' => $request->order,
-                'cms_id' => $request->cms_id,
                 'menu_url' => $request->menu_url,
 
               ]);
@@ -355,14 +345,13 @@ class MenuController extends Controller {
      */
     public function editMenuItem($id) {
         try{
-        // get cms page details  
-        $cms = $this->cms->select('id', 'name')->pluck('name', 'id');
+        
         // base on id get menu item dtails
         $menuItemPageEdit = $this->menuItem->findOrFail($id);
         // get form constant
         $menuTypes = Config::get('menu.menu_types');
         
-        return view('menu::item.edit', compact('cms','menuItemPageEdit','menuTypes'));
+        return view('menu::item.edit', compact('menuItemPageEdit','menuTypes'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -392,12 +381,6 @@ class MenuController extends Controller {
             return Redirect::back()->withErrors($validator);
         }
 
-        if ($request->menu_types == "cms") {
-                $cms = $this->cms->select('slug')->where('id',$request->cms_id)->first();
-                $request['menu_url'] = 'info/'.$cms->slug;
-        } else {
-                $request['cms_id'] = NULL;
-        }
         // update menu details
         $menuUpdate = $this->menuItem->findOrFail($id);
         $menuUpdate->update($request->all());
