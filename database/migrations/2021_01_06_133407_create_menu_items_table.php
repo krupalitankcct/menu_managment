@@ -26,7 +26,6 @@ class CreateMenuItemsTable extends Migration
             $table->softDeletes();
             
             $table->foreign('menu_id')->references('id')->on('menus');
-            $table->foreign('cms_id')->references('id')->on('cms');
         });
     }
 
