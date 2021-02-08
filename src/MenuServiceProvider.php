@@ -35,13 +35,13 @@ class MenuServiceProvider extends ServiceProvider
         $this->app['router']->namespace('menus\menumanagement\Http\Controllers\Backend')
                 ->middleware(['web'])
                 ->group(function () {
-                    $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
+                    $this->loadRoutesFrom(__DIR__ . '/Routes/web.php');
                 });
 
          $this->app['router']->namespace('menus\menumanagement\Http\Controllers\Frontend')
                 ->middleware(['web'])
                 ->group(function () {
-                    $this->loadRoutesFrom(__DIR__ . '/routes/menupage.php');
+                    $this->loadRoutesFrom(__DIR__ . '/Routes/menupage.php');
                 });
 
 
