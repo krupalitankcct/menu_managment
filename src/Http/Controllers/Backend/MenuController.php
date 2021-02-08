@@ -91,7 +91,7 @@ class MenuController extends Controller {
         try{
         //create validation array
         $validator = Validator::make($request->all(),[
-            'menu_category_id' =>'required|unique:menus,deleted_at,NULL',
+            'menu_category_id' =>'required|unique:menus,menu_category_id,NULL,id,deleted_at,NULL',
             'title' => 'required',
         ]);
 
