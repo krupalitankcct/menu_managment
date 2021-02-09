@@ -19,6 +19,6 @@ To make your life easy, the package also includes a ready to use `migration` whi
     
 Then run bellow command to publish config and resource files
 
-php artisan vendor:publish --provider="Menu\Menumanagment\MenuServiceProvider" --tag="views"
+php artisan vendor:publish --provider="menus\menumanagement\MenuServiceProvider" --tag="views"
 
-php artisan vendor:publish --provider="Menu\Menumanagment\MenuServiceProvider" --tag="lang"
+php artisan vendor:publish --provider="menus\menumanagement\MenuServiceProvider" --tag="lang"
