@@ -3,6 +3,7 @@
 namespace menus\menumanagement\View\Components;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Config;
 
 class MenuItemEdit extends Component
 {
@@ -28,6 +29,10 @@ class MenuItemEdit extends Component
      */
     public function render()
     {
-       return view('menu::components.item.menu_item_edit');
+        if(config::get('menu.use_published_view')){
+            return view('menu.components.item.menu_item_edit');
+        }else{
+            return view('menu::item.edit');
+        } 
     }
 }

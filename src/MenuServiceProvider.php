@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Blade;
 use menus\menumanagement\View\Components\MenuAdd;
 use menus\menumanagement\View\Components\MenuEdit;
 use menus\menumanagement\View\Components\MenuList;
-use menus\menumanagement\View\Components\MenuHeader;
 use menus\menumanagement\View\Components\MenuItemAdd;
 use menus\menumanagement\View\Components\MenuItemEdit;
 use menus\menumanagement\View\Components\MenuItemList;
@@ -74,7 +73,6 @@ class MenuServiceProvider extends ServiceProvider
             MenuItemAdd::class,
             MenuItemEdit::class,
             MenuItemList::class,
-            MenuHeader::class,
             MenuPage::class
         ]);
 

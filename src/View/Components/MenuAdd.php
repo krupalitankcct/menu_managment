@@ -3,6 +3,7 @@
 namespace menus\menumanagement\View\Components;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Config;
 
 class MenuAdd extends Component
 {
@@ -25,6 +26,10 @@ class MenuAdd extends Component
      */
     public function render()
     {
-       return view('menu::components.menu_add');
+        if(config::get('menu.use_published_view')){
+            return view('menu.components.menu_add');
+        }else{
+          return view('menu::components.menu_add');
+        }
     }
 }

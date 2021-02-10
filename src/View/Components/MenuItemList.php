@@ -3,6 +3,7 @@
 namespace menus\menumanagement\View\Components;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Config;
 
 class MenuItemList extends Component
 {
@@ -30,6 +31,11 @@ class MenuItemList extends Component
      */
     public function render()
     {
-       return view('menu::components.item.menu_item_list');
+        if(config::get('menu.use_published_view')){
+
+            return view('menu.components.iem.menu_item_list');
+        }else{
+            return view('menu::components.item.menu_item_list');
+        }
     }
 }

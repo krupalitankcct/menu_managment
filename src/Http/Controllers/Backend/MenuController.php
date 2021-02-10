@@ -60,6 +60,7 @@ class MenuController extends Controller {
         //$menus = $menus->paginate(Config::get('menu.per_page.max_record'));
 
         return view('menu::list', compact('menus', 'total_records'));
+       
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
             return view('menu::error.505')->withFlashDanger($ex->getMessage());
@@ -73,7 +74,8 @@ class MenuController extends Controller {
     public function createMenu() {
         try{
 
-        $menuCategories = $this->menuCategory->select('name','id')->pluck('name','id'); 
+        $menuCategories = $this->menuCategory->select('name','id')->pluck('name','id');
+
         return view('menu::add', compact('menuCategories'));
 
         }catch (\Exception $ex) {
@@ -125,7 +127,7 @@ class MenuController extends Controller {
         $menuCategories = $this->menuCategory->select('name','id')->pluck('name','id'); 
 
         return view('menu::edit', compact('menuPageEdit','menuCategories'));
-
+        
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
             return view('menu::error.505')->withFlashDanger($ex->getMessage());
@@ -272,8 +274,12 @@ class MenuController extends Controller {
         $total_records = count($menuItems->get());
         
         $menuItems = $menuItems->paginate(Config::get('menu.per_page.max_record'));
-        
-        return view('menu::item.index', compact('menuItems', 'total_records', 'id'));
+
+        if(config::get('menu.use_published_view')){
+            return view('menu.components.item.menu_item_list', compact('menuItems', 'total_records', 'id'));
+        }else{
+           return view('menu::item.index', compact('menuItems', 'total_records', 'id'));
+        } 
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
@@ -288,10 +294,11 @@ class MenuController extends Controller {
     public function createMenuItem($id) {
         try{
         // get menu details 
-        $menus = $this->menu->select('id')->find($id);
+        $menus = $this->menu->select('*')->find($id);
         
         // get form constant
         $menuTypes = Config::get('menu.menu_types');
+        
         return view('menu::item.create', compact('menus','menuTypes'));
 
         }catch (\Exception $ex) {
