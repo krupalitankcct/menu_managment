@@ -12,5 +12,5 @@ return [
         'max_record' => '10',
     ],
     
-    'use_published_view'=>'true',
+    'use_published_view'=>'false',
 ];
