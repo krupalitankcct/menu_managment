@@ -31,7 +31,7 @@ class MenuItemList extends Component
      */
     public function render()
     {
-        if(config::get('menu.use_published_view')){
+        if(config::get('menu.use_published_view') == "true"){
 
             return view('menu.components.iem.menu_item_list');
         }else{

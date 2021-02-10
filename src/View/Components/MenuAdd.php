@@ -26,7 +26,7 @@ class MenuAdd extends Component
      */
     public function render()
     {
-        if(config::get('menu.use_published_view')){
+        if(config::get('menu.use_published_view') == "true"){
             return view('menu.components.menu_add');
         }else{
           return view('menu::components.menu_add');

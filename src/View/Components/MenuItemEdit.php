@@ -29,7 +29,7 @@ class MenuItemEdit extends Component
      */
     public function render()
     {
-        if(config::get('menu.use_published_view')){
+        if(config::get('menu.use_published_view') == "true"){
             return view('menu.components.item.menu_item_edit');
         }else{
             return view('menu::item.edit');
