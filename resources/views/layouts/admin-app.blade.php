@@ -35,11 +35,11 @@
     <meta name="msapplication-TileImage" content="assets/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <!-- Icons-->
-    <link href="{{ asset('css/free.min.css') }}" rel="stylesheet"> <!-- icons -->
-    <link href="{{ asset('css/flag-icon.min.css') }}" rel="stylesheet"> <!-- icons -->
+    <link href="{{ asset('menu/css/free.min.css') }}" rel="stylesheet"> <!-- icons -->
+    <link href="{{ asset('menu/css/flag-icon.min.css') }}" rel="stylesheet"> <!-- icons -->
     <!-- Main styles for this application-->
-    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/treeview.css') }}" rel="stylesheet">
+    <link href="{{ asset('menu/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('menu/css/treeview.css') }}" rel="stylesheet">
 
     @yield('css')
 
@@ -58,7 +58,7 @@
       gtag('config', 'UA-118965717-5');
     </script>
 
-    <link href="{{ asset('css/coreui-chartjs.css') }}" rel="stylesheet">
+    <link href="{{ asset('menu/css/coreui-chartjs.css') }}" rel="stylesheet">
   </head>
 
 
@@ -71,11 +71,11 @@
 
 
     <!-- CoreUI and necessary plugins-->
-    <script src="{{ asset('js/jquery/jquery-3.5.1.min.js') }}"></script>
-    <script src="{{ asset('js/coreui.bundle.min.js') }}"></script>
-    <script src="{{ asset('js/coreui-utils.js') }}"></script>
-	<script src="{{ asset('js/coreui-utils.js') }}"></script>
-    <script src="{{ asset('js/treeview.js') }}"></script>
+    <script src="{{ asset('menu/js/jquery/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('menu/js/coreui.bundle.min.js') }}"></script>
+    <script src="{{ asset('menu/js/coreui-utils.js') }}"></script>
+	<script src="{{ asset('menu/js/coreui-utils.js') }}"></script>
+    <script src="{{ asset('menu/js/treeview.js') }}"></script>
     @yield('javascript')
 
 
