@@ -29,7 +29,7 @@ class MenuItemEdit extends Component
      */
     public function render()
     {
-        return view('menu::item.edit');
+        return view('menu::components.item.menu_item_edit');
         
     }
 }

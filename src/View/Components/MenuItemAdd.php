@@ -30,6 +30,6 @@ class MenuItemAdd extends Component
      */
     public function render()
     {
-        return view('menu::item.create'); 
+        return view('menu::components.item.menu_item_add'); 
     }
 }

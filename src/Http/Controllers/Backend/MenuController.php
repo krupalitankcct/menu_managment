@@ -274,14 +274,10 @@ class MenuController extends Controller {
         $total_records = count($menuItems->get());
         
         $menuItems = $menuItems->paginate(Config::get('menu.per_page.max_record'));
-
-        if(config::get('menu.use_published_view')){
-            return view('menu.components.item.menu_item_list', compact('menuItems', 'total_records', 'id'));
-        }else{
-           return view('menu::item.index', compact('menuItems', 'total_records', 'id'));
-        } 
-
-        }catch (\Exception $ex) {
+        
+        return view('menu::item.index', compact('menuItems', 'total_records', 'id'));
+       
+    }catch (\Exception $ex) {
             Log::error($ex->getMessage());
             return view('menu::error.505')->withFlashDanger($ex->getMessage());
         }
@@ -326,8 +322,10 @@ class MenuController extends Controller {
         if ($validator->fails()) {
             return Redirect::back()->withErrors($validator);
         }
+        
         //validate data store in menu item table
-        $cms = MenuItem::create([
+
+        $menu = MenuItem::create([
                 'menu_title' => $request->menu_title,
                 'menu_id' => $request->menu_id,
                 'menu_types' => $request->menu_types,
@@ -335,7 +333,7 @@ class MenuController extends Controller {
                 'menu_url' => $request->menu_url,
 
               ]);
-
+              
         return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess(__('package_lang::menu.custom.menu_delete'));
 
         }catch (\Exception $ex) {
