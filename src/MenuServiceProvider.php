@@ -1,15 +1,15 @@
 <?php 
 
-namespace menus\menumanagement;
+namespace Menus\Menumanagement;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
-use menus\menumanagement\View\Components\MenuAdd;
-use menus\menumanagement\View\Components\MenuEdit;
-use menus\menumanagement\View\Components\MenuList;
-use menus\menumanagement\View\Components\MenuItemAdd;
-use menus\menumanagement\View\Components\MenuItemEdit;
-use menus\menumanagement\View\Components\MenuItemList;
-use menus\menumanagement\View\Components\MenuPage;
+use Menus\Menumanagement\View\Components\MenuAdd;
+use Menus\Menumanagement\View\Components\MenuEdit;
+use Menus\Menumanagement\View\Components\MenuList;
+use Menus\Menumanagement\View\Components\MenuItemAdd;
+use Menus\Menumanagement\View\Components\MenuItemEdit;
+use Menus\Menumanagement\View\Components\MenuItemList;
+use Menus\Menumanagement\View\Components\MenuPage;
 use Artisan;
 
 class MenuServiceProvider extends ServiceProvider
@@ -21,7 +21,7 @@ class MenuServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/./../resources/views','menu');
         
         $this->publishes([
-        __DIR__.'/./../resources/views' => resource_path('views/menu/'),
+        __DIR__.'/./../resources/views' => resource_path('views/vendor/menu'),
         ]);
         $this->loadTranslationsFrom(__DIR__.'/./../resources/lang', 'package_lang');
 
@@ -31,13 +31,13 @@ class MenuServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(__DIR__.'/../config/constant.php', 'menu');
 
-        $this->app['router']->namespace('menus\menumanagement\Http\Controllers\Backend')
+        $this->app['router']->namespace('Menus\Menumanagement\Http\Controllers\Backend')
                 ->middleware(['web'])
                 ->group(function () {
                     $this->loadRoutesFrom(__DIR__ . '/Routes/web.php');
                 });
 
-         $this->app['router']->namespace('menus\menumanagement\Http\Controllers\Frontend')
+         $this->app['router']->namespace('Menus\Menumanagement\Http\Controllers\Frontend')
                 ->middleware(['web'])
                 ->group(function () {
                     $this->loadRoutesFrom(__DIR__ . '/Routes/menupage.php');

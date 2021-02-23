@@ -1,6 +1,6 @@
 <?php
 
-namespace menus\menumanagement\View\Components;
+namespace Menus\Menumanagement\View\Components;
 use Illuminate\View\Component;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Config;
@@ -27,11 +27,6 @@ class MenuList extends Component
      */
     public function render()
     {
-        if(config::get('menu.use_published_view') == "true"){
-
-            return view('menu.components.menu_list');
-        }else{
-            return view('menu::components.menu_list');
-        }
+        return view('menu::components.menu_list');
     }
 }

@@ -13,14 +13,14 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "menus\\menumanagement\\": "src/"
+            "Menus\\Menumanagement\\": "src/"
         }
     },
     "extra": 
     {
       "laravel": 
       {
-          "providers": [ "menus\\menumanagement\\MenuServiceProvider" ]
+          "providers": [ "Menus\\Menumanagement\\MenuServiceProvider" ]
       }
     },
     "require": {

@@ -1,6 +1,6 @@
 <?php
 
-namespace menus\menumanagement\Models;
+namespace Menus\Menumanagement\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;

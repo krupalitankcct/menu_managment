@@ -1,11 +1,11 @@
 <?php
-namespace menus\menumanagement\Http\Controllers\Backend;
+namespace Menus\Menumanagement\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use menus\menumanagement\Models\Menu;
-use menus\menumanagement\Models\MenuCategory;
-use menus\menumanagement\Models\MenuItem;
+use Menus\Menumanagement\Models\Menu;
+use Menus\Menumanagement\Models\MenuCategory;
+use Menus\Menumanagement\Models\MenuItem;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Log;

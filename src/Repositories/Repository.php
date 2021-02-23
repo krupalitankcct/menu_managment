@@ -1,6 +1,6 @@
 <?php 
-namespace menus\menumanagement\Repositories;
-use menus\menumanagement\Models\MenuItem;
+namespace Menus\Menumanagement\Repositories;
+use Menus\Menumanagement\Models\MenuItem;
 
 class Repository 
 {

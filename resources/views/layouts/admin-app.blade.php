@@ -64,22 +64,9 @@
 
 
   <body class="c-app">
-    <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
-
-      @include('admin.layouts.shared.nav-builder')
-
-      @include('admin.layouts.shared.header')
-
-      <div class="c-body">
-
-        <main class="c-main">
-
-          @yield('content') 
-
-        </main>
-        @include('admin.layouts.shared.footer')
-      </div>
-    </div>
+    <main class="c-main">
+    @yield('content') 
+    </main>
 
 
 
