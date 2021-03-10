@@ -63,7 +63,7 @@ class MenuController extends Controller {
        
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
     
@@ -80,7 +80,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
     
@@ -94,12 +94,12 @@ class MenuController extends Controller {
         //create validation array
         $validator = Validator::make($request->all(),[
             'menu_category_id' =>'required|unique:menus,menu_category_id,NULL,id,deleted_at,NULL',
-            'title' => 'required',
+            'title' => 'required|max:255',
         ]);
 
         //check validation
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator);
+            return Redirect::back()->withErrors($validator)->withInput();
         }
 
         //validate data store in menu item table
@@ -112,7 +112,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
     /**
@@ -124,13 +124,12 @@ class MenuController extends Controller {
         try{
         // get menu details base 
         $menuPageEdit = $this->menu->findOrFail($id);
-        $menuCategories = $this->menuCategory->select('name','id')->pluck('name','id'); 
-
+        $menuCategories = $this->menuCategory->select('name','id')->pluck('name','id');  
         return view('menu::edit', compact('menuPageEdit','menuCategories'));
         
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -146,7 +145,7 @@ class MenuController extends Controller {
         
         $validator = Validator::make($request->all(),[
             'menu_category_id' =>'required|unique:menus,menu_category_id,'.$id.',id,deleted_at,NULL',
-            'title' => 'required',
+            'title' => 'required|max:255',
             'status' => 'required',
         ]);
 
@@ -166,7 +165,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -194,7 +193,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -215,7 +214,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -236,7 +235,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -279,7 +278,7 @@ class MenuController extends Controller {
        
     }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -290,8 +289,7 @@ class MenuController extends Controller {
     public function createMenuItem($id) {
         try{
         // get menu details 
-        $menus = $this->menu->select('*')->find($id);
-        
+        $menus = $this->menu->select('*')->findOrFail($id);
         // get form constant
         $menuTypes = Config::get('menu.menu_types');
         
@@ -299,7 +297,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -312,15 +310,16 @@ class MenuController extends Controller {
         try{
 
         $validator = Validator::make($request->all(),[
-            'menu_title' => 'required',
+            'menu_title' => 'required|max:255',
             'menu_id' => 'required',
             'menu_types' => 'required',
+            'menu_url' => 'required',
             'order' =>'required|unique:menu_items',
         ]);
 
         //check validation
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator);
+            return Redirect::back()->withErrors($validator)->withInput();
         }
         
         //validate data store in menu item table
@@ -338,7 +337,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
                         
     }
@@ -360,7 +359,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -375,7 +374,7 @@ class MenuController extends Controller {
         try{
         // check validation rules
         $validator = Validator::make($request->all(),[
-            'menu_title' => 'required',
+            'menu_title' => 'required|max:255',
             'menu_id' => 'required',
             'menu_types' => 'required',
             'order' =>'required',
@@ -394,7 +393,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -424,7 +423,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
     }
 
@@ -444,7 +443,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
 
     }
@@ -465,7 +464,7 @@ class MenuController extends Controller {
        
        }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return view('menu::error.505')->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger($ex->getMessage());
         }
 
     }

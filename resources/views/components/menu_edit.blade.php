@@ -4,13 +4,13 @@
     <div class="animated fadeIn">
         <div class="row">
             <div class="col-sm-12 col-md-12">
+                @include('menu::messages')
                 <div class="card">
                     <div class="card-header">
                         <i class="fa fa-align-justify"></i> {{__('package_lang::menu.custom.Menu_header')}}
                     </div>
                     
                     <div class="card-body">
-                        @include('menu::messages')
                         <form action="{{route('menu.update',$menuPageEdit->id) }}" class="form-horizontal" method="post" >
                             {{ csrf_field() }}
                             <div class="row mt-4">

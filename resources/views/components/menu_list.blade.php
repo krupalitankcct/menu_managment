@@ -4,7 +4,7 @@
     <div class="animated fadeIn">
         <div class="row">
             <div class="col-sm-12 col-md-12">
-                 @include('menu::messages')
+                @include('menu::messages')
                 <div class="card">
                     <div class="card-header">
                         <i class="fa fa-align-justify"></i>{{__('package_lang::menu.custom.Menu_header')}}

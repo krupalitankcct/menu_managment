@@ -12,7 +12,6 @@ class Repository
         // get menu details 
         $menus = MenuItem::join('menus', 'menus.id', '=', 'menu_items.menu_id')
                 ->join('menu_categories', 'menu_categories.id', '=', 'menus.menu_category_id')
-                ->with('cms')
                 ->where(['menu_categories.name' => $category, 'menu_items.status' => 'Active','menus.status' => 'Active'])
                 ->orderBy('menu_items.order','ASC')
                 ->get();
