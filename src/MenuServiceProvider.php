@@ -49,7 +49,7 @@ class MenuServiceProvider extends ServiceProvider
         __DIR__.'/../config/constant.php' => config_path('menu.php'),
         ]);
 
-        $this->publishes([__DIR__.'/./../public' => public_path('menu'),
+        $this->publishes([__DIR__.'/./../public' => public_path('menu/'),
             ], 'asset');
 
         $this->publishes([__DIR__.'/./../database/migrations' => database_path('migrations'),
