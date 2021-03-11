@@ -20,6 +20,7 @@ return [
 		'menu_category_name'=>'Menu Category',
 		'status'=>'Status',
 		'no_record'=>'No Record Found',
+		'something_wrong'=>'Something with wrong',
 	],
 	'menu_list'=>[
 		'menu_title'=>'Menu Title',

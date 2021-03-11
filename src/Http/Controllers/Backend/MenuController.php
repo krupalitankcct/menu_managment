@@ -63,7 +63,7 @@ class MenuController extends Controller {
        
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
     
@@ -80,7 +80,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
     
@@ -112,7 +112,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
     /**
@@ -129,7 +129,7 @@ class MenuController extends Controller {
         
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
 
@@ -165,7 +165,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
 
@@ -193,7 +193,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
 
@@ -214,7 +214,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
 
@@ -235,7 +235,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
 
@@ -278,7 +278,7 @@ class MenuController extends Controller {
        
     }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
 
@@ -297,7 +297,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
 
@@ -333,11 +333,11 @@ class MenuController extends Controller {
 
               ]);
               
-        return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess(__('package_lang::menu.custom.menu_delete'));
+        return redirect()->route('menu.item.index', $request->menu_id)->withFlashSuccess(__('package_lang::menu.custom.menu_item_create'));
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
                         
     }
@@ -359,7 +359,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
 
@@ -393,7 +393,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
 
@@ -423,7 +423,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
     }
 
@@ -443,7 +443,7 @@ class MenuController extends Controller {
 
         }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
 
     }
@@ -464,7 +464,7 @@ class MenuController extends Controller {
        
        }catch (\Exception $ex) {
             Log::error($ex->getMessage());
-            return Redirect::back()->withFlashDanger($ex->getMessage());
+            return Redirect::back()->withFlashDanger(__('package_lang::menu.custom.something_wrong'));
         }
 
     }
